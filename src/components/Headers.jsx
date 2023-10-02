@@ -106,6 +106,7 @@ const Headers = () => {
               (<>
                 <div className='flex flex-col gap-3 items-center pt-3'>
                   <Link onClick={toggleHandler} to='/dashboard' className='text-[17px] font-semibold'>Dashboard</Link>
+                  <Link to='/account' className='font-bold'>Account</Link>
                   <button onClick={logoutHandler} className='text-[17px] font-semibold'>Logout</button>
                 </div>
               </>) 
