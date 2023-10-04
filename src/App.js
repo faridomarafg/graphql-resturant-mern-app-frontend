@@ -14,9 +14,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import OrderDetails from './pages/OrderDetails';
 import Account from './pages/Account';
-import Success from './pages/Success';
 import AdminRoute from './components/AdminRoute';
 import Footer from './components/Footer';
+import Success from './pages/Success';
+import SuccessPayment from './pages/SuccessPayment';
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
           <Route path='/order-details/:id' element={<OrderDetails/>}/>
           <Route path='/wish-list' element={<WishList/>}/>
           <Route path='/account' element={<Account/>}/>
+          <Route path='/success-payment' element={<SuccessPayment/>}/>
           <Route path='/success' element={<Success/>}/>
 
 
