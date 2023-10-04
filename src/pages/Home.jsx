@@ -4,7 +4,7 @@ import Foods from './dashboard/Foods'
 
 const Home = () => {
   return (
-    <div className='flex flex-col w-full min-h-scree'>
+    <div className='flex flex-col w-full min-h-scree bg-zinc-700'>
       <Slider/>
       <Foods/>
     </div>

@@ -12,7 +12,7 @@ const AddToWishListBtn = ({food,className}) => {
   return (
     <div>
         <AiFillHeart 
-        className={`${className}`}
+        className={`bg-zinc-700 rounded-md ${className}`}
          onClick={handleAddToWishList}
         />
     </div>
