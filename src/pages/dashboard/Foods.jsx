@@ -24,10 +24,10 @@ const Foods = () => {
     };
 
   return (
-    <div className={pathname ==='/dashboard'? 'flex flex-wrap gap-2 p-4 w-full' : 'flex w-full flex-wrap gap-4 p-4 z-20'}>
+    <div className={pathname ==='/dashboard'? 'flex flex-wrap gap-2 p-4 w-full' : 'flex w-full flex-wrap gap-4 z-20'}>
        {loading ? <LoadingSpinner/> : 
        (
-        <div className='flex w-full flex-wrap gap-4 p-4 justify-center h-fit'>
+        <div className='flex w-full flex-wrap gap-4 p-1 justify-center h-fit'>
         {results?.map((food, index)=>(
             <div key={index} className={pathname === '/dashboard' ? 'border w-fit h-fit rounded-lg overflow-hidden':
             'flex w-full flex-col sm:flex-row  overflow-hidden shadow-md'}>

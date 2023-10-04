@@ -23,7 +23,7 @@ function Slider() {
    const autoSlide = ()=>{//it's used for auto-slidding
        slideInterval = setInterval(() => {
          nextSlide()
-       }, 5000);
+       }, 1500);
    }
 
    useEffect(()=>{//it's used to active auto-slider
