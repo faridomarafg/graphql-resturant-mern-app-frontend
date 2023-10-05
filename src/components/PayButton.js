@@ -35,7 +35,7 @@ const PayButton = ({cartItems}) => {
         name: item.name,
         price: item.price * 100,
         cartQuantity: item.cartQuantity,
-        images: item.images
+        images: item.images[0]
       }));
 
       const { data } = await createCheckoutSesstion({
