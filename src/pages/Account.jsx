@@ -79,61 +79,77 @@ const Account = () => {
         </div>
         {/* ORDER SECTION */}
         <div className={selectedPart ? 'flex flex-col w-[95%] sm:w-[80%] mt-4  p-4 rounded-lg bg-white' : 'hidden w-[98%] mt-4  p-4 rounded-lg bg-white'}>
+           {orders?.length === 0 ? 
+           (<div className='flex w-full justify-center'>
+              <h1 className='text-4xl text-zinc-700 font-serif font-bold'>
+                No order
+              </h1>
+            </div>) 
+           : 
+            <div className={selectedPart ? 'flex flex-col w-[95%] sm:w-[80%] mt-4  p-4 rounded-lg bg-white' : 'hidden w-[98%] mt-4  p-4 rounded-lg bg-white'}>
             {orders?.map((order, index)=>(
-                <div key={index}>
-                {user?.id === order?.userId &&
-                    <div className='flex w-full flex-col sm:flex-row items-start justify-between gap-2 relative m-1 border-2 border-slate-500 rounded-lg'>
-                        <div className='flex w-full flex-col gap-2'>
-                            {order?.line_items.map((item, index)=>(
-                                <div key={index} className='flex gap-3'>
-                                <img 
-                                src={item?.images[0]} 
-                                alt={item?.name} 
-                                className='w-[200px] h-[100px]'
-                                />
-                                <div className='flex flex-col'>
-                                    <div className='flex'>
-                                            <h1>Name:</h1>
-                                            <b>{item?.name}</b>
-                                        </div>
-                                        <div className='flex'>
-                                            <h1>Quantity:</h1>
-                                            <b>{item?.cartQuantity}</b>
-                                        </div>
-                                        <div className='flex'>
-                                            <h1>Price:</h1>
-                                            <b>₹{item?.price / 100}</b>
-                                        </div>
-                                        <div className='flex'>
-                                            <h1>Total:</h1>
-                                            <b>₹{item?.price / 100 * item?.cartQuantity}</b>
-                                        </div>
-                                </div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className='flex flex-col w-full sm:w-[70%] gap-2 text-lg justify-end  text-slate-500 p-2 '>
-                        {/* DELETE ORDER BTN     */}
-                        <div className='flex w-full items-end sm:justify-end pr-[10px] px-1'>
-                            <DeleteOrderBtn id={order.id}/>
-                        </div>
-                          <div className='flex flex-wrap gap-1 '>
-                            <h1>Delivery Status:</h1>
-                            <p className={order?.deliveryStatus === 'Deliveried' ? 'font-bold text-orange-500' :'font-bold text-slate-500'}>{order?.deliveryStatus}</p>
+                  <div key={index} className='flex w-full justify-center'>
+                  {user?.id === order?.userId && order?.paid === 'paid' ?
+                      <div className='flex w-full flex-col sm:flex-row items-start justify-between gap-2 relative m-1 border-2 border-slate-500 rounded-lg'>
+                          <div className='flex w-full flex-col gap-2'>
+                              {order?.line_items.map((item, index)=>(
+                                  <div key={index} className='flex gap-3'>
+                                  <img 
+                                  src={item?.images[0]} 
+                                  alt={item?.name} 
+                                  className='w-[200px] h-[100px]'
+                                  />
+                                  <div className='flex flex-col'>
+                                      <div className='flex'>
+                                              <h1>Name:</h1>
+                                              <b>{item?.name}</b>
+                                          </div>
+                                          <div className='flex'>
+                                              <h1>Quantity:</h1>
+                                              <b>{item?.cartQuantity}</b>
+                                          </div>
+                                          <div className='flex'>
+                                              <h1>Price:</h1>
+                                              <b>₹{item?.price / 100}</b>
+                                          </div>
+                                          <div className='flex'>
+                                              <h1>Total:</h1>
+                                              <b>₹{item?.price / 100 * item?.cartQuantity}</b>
+                                          </div>
+                                  </div>
+                                  </div>
+                              ))}
                           </div>
-                          <div className='flex flex-wrap gap-1'>
-                            <h1>SubTotal:</h1>
-                            <p className='font-mono text-green-700 font-bold'>₹{order?.subTotal / 100}</p>
+                          <div className='flex flex-col w-full sm:w-[70%] gap-2 text-lg justify-end  text-slate-500 p-2 '>
+                          {/* DELETE ORDER BTN     */}
+                          <div className='flex w-full items-end sm:justify-end pr-[10px] px-1'>
+                              <DeleteOrderBtn id={order.id}/>
                           </div>
-                        </div>
-
+                            <div className='flex flex-wrap gap-1 '>
+                              <h1>Delivery Status:</h1>
+                              <p className={order?.deliveryStatus === 'Deliveried' ? 'font-bold text-orange-500' :'font-bold text-slate-500'}>{order?.deliveryStatus}</p>
+                            </div>
+                            <div className='flex flex-wrap gap-1'>
+                              <h1>SubTotal:</h1>
+                              <p className='font-mono text-green-700 font-bold'>₹{order?.subTotal / 100}</p>
+                            </div>
+                          </div>
+  
+                      </div> 
+                      :
+                      <div className='flex w-full justify-start '>
+                        <h1 className='text-2xl text-zinc-700 font-serif font-bold'>
+                          No order
+                        </h1>
                     </div>
-                }
-                </div>
-            ))}
+                  }
+                  </div>
+              ))}
+            </div>
+           }
         </div> 
         {/* USER PROFILE SECTION */}
-        <div className={!selectedPart ? 'flex flex-col w-[65%] mt-4  p-4 rounded-lg bg-white' : 'hidden w-[98%] mt-4  p-4 rounded-lg bg-white '}>
+        <div className={!selectedPart ? 'flex flex-col w-[95%] sm:w-[65%] mt-4  p-4 rounded-lg bg-white' : 'hidden w-[98%] mt-4  p-4 rounded-lg bg-white '}>
             <div className='flex flex-wrap gap-1 text-xl font-mono text-zinc-700 font-semibold border-b border-b-zinc-700 pb-1 mb-3'>
                 <h1>Name:</h1>
                 <h2>{user?.name}</h2>
@@ -166,6 +182,7 @@ const GET_ORDERS = gql`
     userId
     deliveryStatus
     subTotal
+    paid
     line_items {
       name
       cartQuantity
