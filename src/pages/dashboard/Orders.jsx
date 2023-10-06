@@ -110,7 +110,7 @@ const Orders = () => {
                  </div> 
                  <div className='flex w-full flex-col border-x-0 sm:border-x border-y border-y-zinc-600 sm:border-y-0  border-x-zinc-600 px-1'>
                    <h1>Paid_status</h1>
-                   <b>{order?.paid ? <span className='text-green-700'>Paid</span> : <span className='text-zinc-600'>Unpaind</span>}</b>
+                   <b>{order?.paid === 'paid' ? <span className='text-green-700'>Paid</span> : <span className='text-zinc-600'>Unpaind</span>}</b>
                  </div> 
                  <div className='flex w-full flex-col border-x-0 sm:border-x border-y border-y-zinc-600 sm:border-y-0  border-x-zinc-600 px-1'>
                    <h1>DeliveryStatus</h1>
